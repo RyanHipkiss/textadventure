@@ -1,4 +1,7 @@
-﻿using System;
+﻿using System.Linq;
+using System.Collections.Generic;
+using System.Data.Common;
+using System;
 using LiteDB;
 
 namespace darkroom
@@ -7,29 +10,41 @@ namespace darkroom
     {
         static void Main(string[] args)
         {
-            DB db = new DB();
-            db.setup();
-            Game game = new Game();
+            Program.setupGame();
+        }
 
-            Console.WriteLine("Welcome, " + game.getPlayer().getName());
-            
-            Choice choice = new Choice("a", "b", "c", "d");
-            choice.getOptions();
-            String playersChoice = game.createChoice("Where would you like to go?");
+        static void setupGame()
+        {
+            using(var db = new LiteDatabase(@"Points.db"))
+            {
+                db.DropCollection("points");
+                var points = db.GetCollection<Point>("points");
 
-            if(game.getDeadPath().Contains(playersChoice)) {
-                game.end();
-            }
+                for(var i = 1; i <= 10; i++) {
+                    List<KeyValuePair<int, String>> list = new List<KeyValuePair<int, String>>();
+                    list.Add(new KeyValuePair<int, String>(1, "North"));
+                    list.Add(new KeyValuePair<int, String>(2, "East"));
+                    list.Add(new KeyValuePair<int, String>(3, "South"));
+                    list.Add(new KeyValuePair<int, string>(4, "West"));
 
-            if(playersChoice == "a") {
-                Console.WriteLine("Ooh, you caress the wall. Now the others are jealous:");
-                Choice secondChoice = new Choice("e", "f", "g", "h");
+                    var point = new Point
+                    {
+                        id = i,
+                        parentId = 1,
+                        deadOptions = new List<int>(),
+                        choices = list
+                    };
 
-                secondChoice.getOptions();
-                String playerSecondChoice = game.createChoice("What will you do?");
-                
-                if(game.getDeadPath().Contains(playerSecondChoice)) {
-                    game.end();
+                    points.Insert(point);
+                    points.EnsureIndex(x => x.id);
+                }
+
+                var x = points.FindAll();
+
+                foreach(var result in x) {
+                    result.choices.ForEach(x => {
+                        Console.WriteLine(x);
+                    });
                 }
             }
         }

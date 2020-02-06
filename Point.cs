@@ -5,8 +5,10 @@ namespace darkroom
     class Point
     {
         public int id { get; set; }
-        public int parentId { get; set; }
+        public int? parentId { get; set; }
 
         public List<int> deadOptions { get; set; }
+
+        public List<KeyValuePair<int, String>> choices { get; set; }
     }
 }
