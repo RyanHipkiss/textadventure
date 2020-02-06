@@ -1,0 +1,13 @@
+/home/ryan/darkroom/bin/Debug/netcoreapp3.1/darkroom
+/home/ryan/darkroom/bin/Debug/netcoreapp3.1/darkroom.deps.json
+/home/ryan/darkroom/bin/Debug/netcoreapp3.1/darkroom.runtimeconfig.json
+/home/ryan/darkroom/bin/Debug/netcoreapp3.1/darkroom.runtimeconfig.dev.json
+/home/ryan/darkroom/bin/Debug/netcoreapp3.1/darkroom.dll
+/home/ryan/darkroom/bin/Debug/netcoreapp3.1/darkroom.pdb
+/home/ryan/darkroom/obj/Debug/netcoreapp3.1/darkroom.csprojAssemblyReference.cache
+/home/ryan/darkroom/obj/Debug/netcoreapp3.1/darkroom.AssemblyInfoInputs.cache
+/home/ryan/darkroom/obj/Debug/netcoreapp3.1/darkroom.AssemblyInfo.cs
+/home/ryan/darkroom/obj/Debug/netcoreapp3.1/darkroom.dll
+/home/ryan/darkroom/obj/Debug/netcoreapp3.1/darkroom.pdb
+/home/ryan/darkroom/bin/Debug/netcoreapp3.1/LiteDB.dll
+/home/ryan/darkroom/obj/Debug/netcoreapp3.1/darkroom.csproj.CopyComplete
